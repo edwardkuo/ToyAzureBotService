@@ -48,10 +48,10 @@ namespace Help
         {
             string result = string.Empty;
 
-            var client = new RestClient("https://southeastasia.api.cognitive.microsoft.com/customvision/v3.0/Prediction/f724040d-ec7c-46db-aa51-ae6e5ff38fd6/classify/iterations/Iteration4/image");
+            var client = new RestClient(System.Environment.GetEnvironmentVariable("CostomVisionURL", EnvironmentVariableTarget.Process)");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
-            request.AddHeader("Prediction-Key", "b5fc6a04892e4c2c9d78d17f8f285904");
+            request.AddHeader("Prediction-Key", System.Environment.GetEnvironmentVariable("CustomVisionPrediction-Key", EnvironmentVariableTarget.Process));
             request.AddHeader("Content-Type", "application/octet-stream");
             request.AddParameter("application/octet-stream", binary, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
