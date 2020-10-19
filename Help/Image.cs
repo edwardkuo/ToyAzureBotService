@@ -48,7 +48,7 @@ namespace Help
         {
             string result = string.Empty;
 
-            var client = new RestClient(System.Environment.GetEnvironmentVariable("CostomVisionURL", EnvironmentVariableTarget.Process)");
+            var client = new RestClient(System.Environment.GetEnvironmentVariable("CostomVisionURL", EnvironmentVariableTarget.Process));
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddHeader("Prediction-Key", System.Environment.GetEnvironmentVariable("CustomVisionPrediction-Key", EnvironmentVariableTarget.Process));
